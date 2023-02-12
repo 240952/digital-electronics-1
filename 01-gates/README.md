@@ -37,7 +37,7 @@ end architecture dataflow;
 
    ![your figure]()
    
-   ```vhdl
+ ```vhdl
 architecture dataflow of gates is
 begin
     f_left <= (a_i and b_i) or (a_i and c_i);
