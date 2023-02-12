@@ -35,7 +35,8 @@ end architecture dataflow;
 
 1. Screenshot with simulated time waveforms. Always display all inputs and outputs (display the inputs at the top of the image, the outputs below them) at the appropriate time scale!
 
-   ![your figure]()
+   ![eda](https://user-images.githubusercontent.com/124675731/218341669-52d54708-169c-4cc7-8436-3fa8c75d6450.png)
+
    
  ```vhdl
 architecture dataflow of gates is
