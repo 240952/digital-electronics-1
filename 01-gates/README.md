@@ -36,6 +36,14 @@ end architecture dataflow;
 1. Screenshot with simulated time waveforms. Always display all inputs and outputs (display the inputs at the top of the image, the outputs below them) at the appropriate time scale!
 
    ![your figure]()
+   
+   ```vhdl
+architecture dataflow of gates is
+begin
+    f_left <= (a_i and b_i) or (a_i and c_i);
+    f_right <= a_i and (b_i or c_i);    
+end architecture dataflow;
+```
 
 2. Link to your public EDA Playground example:
 
