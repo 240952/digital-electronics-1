@@ -36,21 +36,21 @@
 
  -- Turn LED(6) on if input value is odd, ie 1, 3, 5, ...
  -- LED(6) <= WRITE YOUR CODE HERE
- LED(6) <= '1' when (SW = "0001") else  --1
-           '1' when (SW = "0011") else --3
-           '1' when (SW = "0101") else  --5
-           '1' when (SW = "0111") else  --7
-           '1' when (SW = "1001") else  --9
-           '1' when (SW = "1011") else  --11
-           '1' when (SW = "1101") else  --13
-           '1' when (SW = "1111") else '0'; --15
+ LED(6) <= '1' when (SW = "0001") else  
+           '1' when (SW = "0011") else 
+           '1' when (SW = "0101") else  
+           '1' when (SW = "0111") else  
+           '1' when (SW = "1001") else  
+           '1' when (SW = "1011") else  
+           '1' when (SW = "1101") else  
+           '1' when (SW = "1111") else '0'; 
 
  -- Turn LED(7) on if input value is a power of two, ie 1, 2, 4, or 8
  -- LED(7) <= WRITE YOUR CODE HERE
- LED(7) <= '1' when (SW = "0001") else    --1
-             '1' when (SW = "0010") else  --2
-             '1' when (SW = "0100") else  --4
-             '1' when (SW = "1000") else '0'; --8
+ LED(7) <= '1' when (SW = "0001") else    
+             '1' when (SW = "0010") else  
+             '1' when (SW = "0100") else  
+             '1' when (SW = "1000") else '0'; 
   ```
 
 
