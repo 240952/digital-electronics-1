@@ -52,6 +52,7 @@
              '1' when (SW = "0010") else  --2
              '1' when (SW = "0100") else  --4
              '1' when (SW = "1000") else '0'; --8
+ ```
 
 
 3. Screenshot with simulated time waveforms for LED(7:4). Always display all inputs and outputs (display the inputs at the top of the image, the outputs below them) at the appropriate time scale!
