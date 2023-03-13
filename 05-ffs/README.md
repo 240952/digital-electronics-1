@@ -1,4 +1,4 @@
-# Lab 5: Elena Melicharová
+# Lab 5: Elena Melicharová (240952)
 
 ### D & T Flip-flops
 
@@ -41,4 +41,5 @@ end architecture Behavioral;
 
 1. Image of `top` level schematic of the 4-bit shift register. Use four D-type flip-flops and connect them properly. The image can be drawn on a computer or by hand. Always name all inputs, outputs, components and internal signals!
 
-   ![your figure]()
+   ![obvod](https://user-images.githubusercontent.com/124675731/224828344-45fc6d93-790d-4ecc-8572-6e2b246ee484.jpg)
+
