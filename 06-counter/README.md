@@ -1,4 +1,4 @@
-# Lab 6: INSERT_YOUR_FIRSTNAME INSERT_YOUR_LASTNAME
+# Lab 6: Elena Melicharová (240952)
 
 ### Bidirectional counter
 
