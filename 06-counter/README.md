@@ -22,6 +22,7 @@
             sig_cnt <= sig_cnt - 1;
         end if;
       end if;
+    end if;
     end process p_cnt_up_down;
 ```
 
