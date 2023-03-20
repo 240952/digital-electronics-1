@@ -12,15 +12,15 @@
     --------------------------------------------------------
     p_cnt_up_down : process (clk) is
     begin
-      if rising_edge(clk) then
-        if (rst = '1') then           
-          sig_cnt <= (others => '0'); 
-        elsif (en = '1') then         
-           if (cnt_up = '1') then 
-            sig_cnt <= sig_cnt +1;
-        else 
-            sig_cnt <= sig_cnt - 1;
-        end if;
+     if rising_edge(clk) then
+		if (rst = '1') then           
+			sig_cnt <= (others => '0');   
+	elsif (en = '1') then         
+		if (cnt_up = '1') then        
+		        sig_cnt <= sig_cnt + 1;   
+		else
+		        sig_cnt <= sig_cnt - 1;   
+	        end if;
       end if;
     end if;
     end process p_cnt_up_down;
