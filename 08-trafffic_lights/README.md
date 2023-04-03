@@ -110,4 +110,5 @@
 
 3. Figure of Moor-based state diagram of the traffic light controller with *speed button* to ensure a synchronous transition to the `WEST_GO` state. The image can be drawn on a computer or by hand. Always name all states, transitions, and input signals!
 
-   ![your figure]()
+   ![diagramek](https://user-images.githubusercontent.com/124675731/229595190-944ce518-2d63-477d-a3c6-2943fa1cb88d.png)
+
