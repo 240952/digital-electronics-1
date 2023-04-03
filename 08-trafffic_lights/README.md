@@ -5,19 +5,14 @@
 1. Listing of VHDL code of the completed process `p_traffic_fsm`. Always use syntax highlighting, meaningful comments, and follow VHDL guidelines:
 
 ```vhdl
-    --------------------------------------------------------
-    -- p_traffic_fsm:
-    -- A sequential process with synchronous reset and
-    -- clock_enable entirely controls the s_state signal by
-    -- CASE statement.
-    --------------------------------------------------------
+ 
   p_traffic_fsm : process (clk) is
   begin
 
     if (rising_edge(clk)) then
-      if (rst = '1') then                    -- Synchronous reset
-        sig_state <= WEST_STOP;              -- Init state
-        sig_cnt   <= c_ZERO;                 -- Clear delay counter
+      if (rst = '1') then                    
+        sig_state <= WEST_STOP;              
+        sig_cnt   <= c_ZERO;                 
       elsif (sig_en = '1') then
         -- Every 250 ms, CASE checks the value of sig_state
         -- local signal and changes to the next state 
@@ -98,8 +93,8 @@
 
         end case;
 
-      end if; -- Synchronous reset
-    end if; -- Rising edge
+      end if; 
+    end if; 
   end process p_traffic_fsm;
 
 ```
