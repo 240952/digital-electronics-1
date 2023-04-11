@@ -1,6 +1,6 @@
 # UART
 ### Team members
-Martin Poč (responsible for ...)
+Martin Poč (responsible for nothing)
 
 Michal Politzer (responsible for ...)
 
