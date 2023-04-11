@@ -1,4 +1,5 @@
 # Team members
+
 Martin Poč (responsible for ...)
 Michal Politzer (responsible for ...)
 Elena Melicharová (responsible for ...)
