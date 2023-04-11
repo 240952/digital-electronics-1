@@ -1,8 +1,11 @@
 # Team members
 
 Martin Poč (responsible for ...)
+
 Michal Politzer (responsible for ...)
+
 Elena Melicharová (responsible for ...)
+
 
 # Theoretical description and explanation
 Enter a description of the problem and how to solve it.
