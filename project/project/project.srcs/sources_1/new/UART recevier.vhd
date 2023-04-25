@@ -18,7 +18,7 @@ architecture Behavioral of uart_receiver is
     signal rx_count: integer range 0 to 9 := 0;
     signal start_bit: std_logic := '0';
     signal data_ready: std_logic := '0';
-
+-----
 begin
 
     process(clk)
