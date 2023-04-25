@@ -61,29 +61,80 @@ begin
         clk  => sig_clk
         );
         
- p_clk_gen : process
-    begin
-        while now < 750 ns loop -- 75 periods of 100MHz clock
-            sig_clk <= '0';
-            wait for c_CLK_9600HZ_PERIOD / 2;
-            sig_clk <= '1';
-            wait for c_CLK_9600HZ_PERIOD / 2;
-        end loop;
-        wait;
+ -----------------------------------------
+--Clock generation process
+-----------------------------------------
+ p_clk_gen : process is
+  begin
+
+    while now < 1000 ns loop             
+
+      sig_clk_100mhz <= '0';
+      wait for c_CLK_100MHZ_PERIOD / 2;
+      sig_clk_100mhz <= '1';
+      wait for c_CLK_100MHZ_PERIOD / 2;
+
+    end loop;
+    wait;                              
+
   end process p_clk_gen;
-  p_stimulus : process
-    begin
-        sig_A0 <= '1';
-        sig_A1 <= '0';
-        sig_A2 <= '0';
-        sig_A3 <= '0';
-        sig_A4 <= '1';
-        sig_A5 <= '0';
-        sig_A6 <= '0';
-        sig_A7 <= '0';
-        wait for 20ms; 
- 
+
+
+-----------------------------------------
+ --Reset generation process
+----------------------------------------
+ p_reset_gen : process is
+  begin
+
+	sig_rst <= '0';
+	wait for 60 ns;
+    sig_rst <= '1';
+    wait for 50 ns;
+    sig_rst <= '0';
+    
+
+ wait;
+
+ end process p_reset_gen;
+  --------------------------------------------------------
+  --Data generation process
+  --------------------------------------------------------
+  p_stimulus : process is
+  begin
+
+    report "Stimulus process started";
+	
+	
+    sig_btn_send <= '0';
+    wait for 20 ns;
+    sig_data_in <= "10101001";
+    wait for 10 ns;
+	sig_btn_send <= '1';
+    wait for 20 ns;
+	sig_btn_send <= '0';
+    
+    wait for 100 ns;
+    sig_data_in <= "10101110";
+    wait for 57 ns;
+	sig_btn_send <= '1';
+    wait for 20 ns;
+	sig_btn_send <= '0';
+    
+    wait for 400 ns;
+    sig_data_in <= "01000100";
+    wait for 3 ns;
+	sig_btn_send <= '1';
+    wait for 15 ns;
+	sig_btn_send <= '0';
+
+
+      
+
+
+    report "Stimulus process finished";
+    wait;
+
   end process p_stimulus;
 
 
-end architecture Behavioral;
+end architecture testbench;
