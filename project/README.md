@@ -4,7 +4,7 @@ Martin Poč (responsible for nothing)
 
 Michal Politzer (responsible for betrayal)
 
-Elena Melicharová (responsible for suck)
+Elena Melicharová (responsible for everything)
 
 
 ### Theoretical description and explanation
