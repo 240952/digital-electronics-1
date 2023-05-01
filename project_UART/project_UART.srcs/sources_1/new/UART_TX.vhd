@@ -23,10 +23,10 @@ architecture RTL of Transmitter is
                      s_TX_Stop_Bit, s_Cleanup);
   signal r_SM_Main : t_SM_Main := s_Idle;
  
-  signal r_Clk_Count : integer range 0 to g_CLKS_PER_BIT-1 := 0;
+  signal r_Clk_Count : integer range 0 to g_CLKS_PER_BIT-1 := 0; -- clock counter
   signal r_Bit_Index : integer range 0 to 7 := 0;  -- 8 bitu celkovì
-  signal r_TX_Data   : std_logic_vector(7 downto 0) := (others => '0');
-  signal r_TX_Done   : std_logic := '0';
+  signal r_TX_Data   : std_logic_vector(7 downto 0) := (others => '0');-- TX ulozeni odeslanych dat
+  signal r_TX_Done   : std_logic := '0'; -- odesilani dat dokonceno
    
 begin
    
