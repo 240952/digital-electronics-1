@@ -19,7 +19,11 @@ Blokové schéma našeho UART projektu:
 
 ## Software description
 
-Put flowchats/state diagrams of your algorithm(s) and direct links to source/testbench files in `src` and `sim` folders. 
+Receiver:
+This receiver is able to receive 8 bits of serial data, one start bit, one stop bit, and no parity bit.  When receive is complete o_rx_dv will be driven high for one clock cycle.
+
+Transmitter:
+This transmitter is able to transmit 8 bits of serial data, one start bit, one stop bit, and no parity bit.  When transmit is complete o_TX_Done will be driven high for one clock cycle.
 
 ### Component(s) simulation
 
