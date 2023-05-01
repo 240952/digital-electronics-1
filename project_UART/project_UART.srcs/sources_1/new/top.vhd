@@ -1,8 +1,37 @@
+----------------------------------------------------------------------------------
+-- Company: 
+-- Engineer: 
+-- 
+-- Create Date: 17.04.2023 15:18:47
+-- Design Name: 
+-- Module Name: top - Behavioral
+-- Project Name: 
+-- Target Devices: 
+-- Tool Versions: 
+-- Description: 
+-- 
+-- Dependencies: 
+-- 
+-- Revision:
+-- Revision 0.01 - File Created
+-- Additional Comments:
+-- 
+----------------------------------------------------------------------------------
+
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VComponents.all;
+
+-- Uncomment the following library declaration if using
+-- arithmetic functions with Signed or Unsigned values
+--use IEEE.NUMERIC_STD.ALL;
+
+-- Uncomment the following library declaration if instantiating
+-- any Xilinx leaf cells in this code.
+--library UNISIM;
+--use UNISIM.VComponents.all;
 
 entity top is
 
@@ -32,10 +61,7 @@ architecture Behavioral of top is
     signal BTreset : std_logic;
     signal s_data : std_logic_vector(8-1 downto 0);
     signal s_bound : std_logic_vector(16-1 downto 0);
-    signal s_enable : std_logic;
----------------------------------------------------
--- prizaneni signalu
----------------------------------------------------
+    signal s_enable	 	: std_logic;
 begin
   driver_seg_4 : entity work.driver_7seg_4digits
       port map (
@@ -77,9 +103,7 @@ begin
           -- DIGITS
           dig(7 downto 0) => AN(7 downto 0)
       );       
----------------------------------------------
---pripojeni receiveru a transmittiru do topu
----------------------------------------------
+
         
     RX_UART: entity work.receiver
     port map(
