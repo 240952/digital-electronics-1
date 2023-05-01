@@ -6,29 +6,50 @@ entity receiver is
     generic(
         Clk_per_bit   :     integer := 650
     );
+    
+-----------------------------------------------------------------
+-- Clk              Vstupní hodinový signál
+-- rx_serial        Vstupní sériový datový signál
+-- rx_data_valid    Výstupní indikátor platného datového signálu
+-- rx_dout          Výstupní osmibitový datový signál
+-----------------------------------------------------------------
     port(
-        Clk           :     in  std_logic;    -- Vstupní hodinový signál
-        rx_serial     :     in  std_logic;    -- Vstupní sériový datový signál
-        rx_data_valid :     out std_logic;    -- Výstupní indikátor platného datového signálu
-        rx_dout       :     out std_logic_vector(7 downto 0) -- Výstupní osmibitový datový signál
+        Clk           :     in  std_logic;    
+        rx_serial     :     in  std_logic;    
+        rx_data_valid :     out std_logic;    
+        rx_dout       :     out std_logic_vector(7 downto 0) 
     );    
     end receiver;
 
 architecture Behavioral of receiver is
--- Definice stavového automatu  pro p?íjem UART signálu
+
+---------------------------------------------------------
+-- stavovovy automat pro prijem UART signalu
+---------------------------------------------------------
+
+-- signal H_data        Pomocný registr pro p?ijatá data
+-- signal A_data        Aktuální bit dat p?ijatých z UART
+---------------------------------------------------------
 type t_SM_Main is (s_idle, s_StartBit_rx, s_DataBits_rx,
                      s_StopBit_rx, s_clear);  
   signal r_SM_Main : t_SM_Main := s_idle;
  
   -- Pomocné signály pro p?íjem dat
-  signal H_data   : std_logic := '0';  -- Pomocný registr pro p?ijatá data
-  signal A_data   : std_logic := '0';  -- Aktuální bit dat p?ijatých z UART
+  signal H_data   : std_logic := '0';  
+  signal A_data   : std_logic := '0';  
  
-  -- Signály pro ?ízení p?ijetí dat
-  signal s_ClkCount     :   integer range 0 to Clk_per_bit-1 := 0;  -- Po?ítadlo hodinových cykl?
-  signal s_indexBitA    :   integer range 0 to 7 := 0;  -- Index aktuáln? p?ijatého bitu (z 8)
-  signal s_bytes        :   std_logic_vector(7 downto 0) := (others => '0');  -- P?ijatý byte (8 bit?)
-  signal s_data_valid           :   std_logic := '0';  -- Indikátor platnosti p?ijatého bytu
+-----------------------------------------------------------
+-- Signaly pro rizeni prijeti dat
+-----------------------------------------------------------
+
+-- signal s_indexBitA       Index aktualni prijateho bitu
+-- signal s_bytes           Prijaty byte 
+-----------------------------------------------------------
+  signal s_ClkCount     :   integer range 0 to Clk_per_bit-1 := 0;  
+  signal s_indexBitA    :   integer range 0 to 7 := 0;  
+  signal s_bytes        :   std_logic_vector(7 downto 0) := (others => '0');  
+  signal s_data_valid           :   std_logic := '0';  
+  
 begin
 
 ----------------------------------------------
