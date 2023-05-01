@@ -6,6 +6,9 @@ use UNISIM.VComponents.all;
 
 entity top is
 
+----------------------------------------------
+-- Prirazeni signalu
+----------------------------------------------
 port(
     BTNC        : in std_logic;
     SW          : in std_logic_vector(8-1 downto 0);
