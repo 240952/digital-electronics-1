@@ -22,7 +22,7 @@ Blokové schéma našeho UART projektu:
 Put flowchats/state diagrams of your algorithm(s) and direct links to source/testbench files in `src` and `sim` folders. 
 
 ### Component(s) simulation
-
+Simulace projektu:
 ![simulace](https://user-images.githubusercontent.com/124675731/235498417-585c4e42-5c76-4d58-83c0-33b1e89fee9c.png)
 
 Write descriptive text and simulation screenshots of your components.
