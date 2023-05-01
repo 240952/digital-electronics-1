@@ -1,25 +1,14 @@
-------------------------------------------------------------------------
---
--- Generates clock enable signal.
--- Nexys A7-50T, Vivado v2020.1.1, EDA Playground
---
--- Copyright (c) 2019-present Tomas Fryza
--- Dept. of Radio Electronics, Brno Univ. of Technology, Czechia
--- This work is licensed under the terms of the MIT license.
---
-------------------------------------------------------------------------
-
 library ieee;
 use ieee.std_logic_1164.all;
-use ieee.std_logic_unsigned.all;    -- Provides unsigned numerical computation
+use ieee.std_logic_unsigned.all;   
 
 ------------------------------------------------------------------------
--- Entity declaration for clock enable
+-- Entity deklarace pro clock enable
 ------------------------------------------------------------------------
 entity clock_enable is
 
 port (
-	Num_clkPer	     : in std_logic_vector(16-1 downto 0);--pocet cyklu pred vytvorenim pulsu
+    Num_clkPer	    : in std_logic_vector(16-1 downto 0);--pocet cyklu pred vytvorenim pulsu
     Clk             : in  std_logic;--hodinovy signal
     RESET           : in  std_logic;-- reset                                      
     ce              : out std_logic--vystupni signal
@@ -28,7 +17,7 @@ port (
 end entity clock_enable;
 
 ------------------------------------------------------------------------
--- Architecture declaration for clock enable
+-- Deklarace architektury pro povolení clock
 ------------------------------------------------------------------------
 architecture Behavioral of clock_enable is
     signal s_Num_cnt : std_logic_vector(16-1 downto 0) := x"0000"; --signal pro pocitani cyklu
@@ -36,9 +25,9 @@ begin
 
     --------------------------------------------------------------------
     -- p_clk_enable:
-    -- Generate clock enable signal instead of creating another clock 
-    -- domain. By default enable signal is low and generated pulse is 
-    -- always one clock long.
+    -- Vygenerujte signál povolení hodin namísto vytváření dalších hodin
+    -- doména. Ve výchozím nastavení je signál povolení nízký a generovaný pulz je
+    -- vždy jednu hodinu dlouhé.
     --------------------------------------------------------------------
     p_clk_enable : process(Clk)
     begin
