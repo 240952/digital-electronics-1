@@ -66,35 +66,6 @@ begin
   --------------------------------------------------------
   
   
---  clk_en0 : entity work.clock_enable
---    generic map (
---      -- FOR SIMULATION, KEEP THIS VALUE TO 4
---      -- FOR IMPLEMENTATION, CHANGE THIS VALUE TO 400,000
-      -- 4      @ 4 ns
-      -- 400000 @ 4 ms
---      g_max => 400000
---    )
- --   port map (
---      clk => clk, -- WRITE YOUR CODE HERE
---      rst => rst,-- WRITE YOUR CODE HERE
---      ce  => sig_en_4ms
---    );
-
-  --------------------------------------------------------
-  -- Instance (copy) of cnt_up_down entity performs
-  -- a 2-bit down counter
-  --------------------------------------------------------
---  bin_cnt0 : entity work.cnt_up_down
---    generic map (
---        g_CNT_WIDTH => 2
---    )
---    port map (
---      rst => rst,
---      en => sig_en_4ms,
- --     clk => clk,
- --     cnt_up => '0',
---      cnt => sig_cnt_2bit
- --   );
 
   --------------------------------------------------------
   -- Instance (copy) of hex_7seg entity performs
