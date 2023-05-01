@@ -35,7 +35,11 @@ Simulace projektu:
 
 ## Instructions
 
-Write an instruction manual for your application, including photos or a link to a video.
+Receiver:
+
+Transmitter:
+
+
 
 ## References
 
