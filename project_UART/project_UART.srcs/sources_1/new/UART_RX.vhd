@@ -15,36 +15,36 @@ entity receiver is
         Clk_per_bit   :     integer := 650
     );
     port(
-        Clk           :     in  std_logic;    -- VstupnÌ hodinov˝ sign·l
-        rx_serial     :     in  std_logic;    -- VstupnÌ sÈriov˝ datov˝ sign·l
-        rx_data_valid :     out std_logic;    -- V˝stupnÌ indik·tor platnÈho datovÈho sign·lu
-        rx_dout       :     out std_logic_vector(7 downto 0) -- V˝stupnÌ osmibitov˝ datov˝ sign·l
+        Clk           :     in  std_logic;    -- Vstupn√≠ hodinov√Ω sign√°l
+        rx_serial     :     in  std_logic;    -- Vstupn√≠ s√©riov√Ω datov√Ω sign√°l
+        rx_data_valid :     out std_logic;    -- V√Ωstupn√≠ indik√°tor platn√©ho datov√©ho sign√°lu
+        rx_dout       :     out std_logic_vector(7 downto 0) -- V√Ωstupn√≠ osmibitov√Ω datov√Ω sign√°l
     );    
     end receiver;
 
 architecture Behavioral of receiver is
--- Definice stavovÈho automatu  pro p?Ìjem UART sign·lu
+-- Definice stavov√©ho automatu  pro p?√≠jem UART sign√°lu
 type t_SM_Main is (s_idle, s_StartBit_rx, s_DataBits_rx,
                      s_StopBit_rx, s_clear);  
   signal r_SM_Main : t_SM_Main := s_idle;
  
-  -- PomocnÈ sign·ly pro p?Ìjem dat
-  signal H_data   : std_logic := '0';  -- Pomocn˝ registr pro p?ijat· data
-  signal A_data   : std_logic := '0';  -- Aktu·lnÌ bit dat p?ijat˝ch z UART
+  -- Pomocn√© sign√°ly pro p?√≠jem dat
+  signal H_data   : std_logic := '0';  -- Pomocn√Ω registr pro p?ijat√° data
+  signal A_data   : std_logic := '0';  -- Aktu√°ln√≠ bit dat p?ijat√Ωch z UART
  
-  -- Sign·ly pro ?ÌzenÌ p?ijetÌ dat
-  signal s_ClkCount     :   integer range 0 to Clk_per_bit-1 := 0;  -- Po?Ìtadlo hodinov˝ch cykl?
-  signal s_indexBitA    :   integer range 0 to 7 := 0;  -- Index aktu·ln? p?ijatÈho bitu (z 8)
-  signal s_bytes        :   std_logic_vector(7 downto 0) := (others => '0');  -- P?ijat˝ byte (8 bit?)
-  signal s_data_valid           :   std_logic := '0';  -- Indik·tor platnosti p?ijatÈho bytu
+  -- Sign√°ly pro ?√≠zen√≠ p?ijet√≠ dat
+  signal s_ClkCount     :   integer range 0 to Clk_per_bit-1 := 0;  -- Po?√≠tadlo hodinov√Ωch cykl?
+  signal s_indexBitA    :   integer range 0 to 7 := 0;  -- Index aktu√°ln? p?ijat√©ho bitu (z 8)
+  signal s_bytes        :   std_logic_vector(7 downto 0) := (others => '0');  -- P?ijat√Ω byte (8 bit?)
+  signal s_data_valid           :   std_logic := '0';  -- Indik√°tor platnosti p?ijat√©ho bytu
 begin
     --Vzorkovani serieoveho vstupu
-<<<<<<< HEAD
+
     IN_sample : process(Clk)
-=======
+
 --------------------------------------- 
  IN_sample : process(Clk)
->>>>>>> 42c3be2f1a4dbfdfe5965d6b85588521513745cd
+
         begin
             if Clk'event and Clk ='1' then
                 H_data <= rx_serial;
@@ -55,7 +55,7 @@ begin
         begin
             if Clk'event and Clk = '1' then
                 case r_SM_Main is 
-<<<<<<< HEAD
+
                     when s_idle => -- Vstuoni stav
                         s_data_valid<=  '0'; -- Nula do platnych dat
                         s_ClkCount  <=   0;  -- Nula do pocitadla
@@ -106,7 +106,7 @@ begin
                         s_data_valid <='0';
                    when others =>
                         r_SM_Main <= s_idle;                                                    
-=======
+
 ----------------------------------------------------------------
 -- Vstupni stav
 ----------------------------------------------------------------
@@ -173,7 +173,7 @@ begin
                 s_data_valid <='0';
         when others =>
                  r_SM_Main <= s_idle;                                                    
->>>>>>> 42c3be2f1a4dbfdfe5965d6b85588521513745cd
+
                 end case; 
             end if;
     end process;
