@@ -14,6 +14,7 @@ UART znamená v překladu univerzální asynchronní přijímač/vysílač. Je t
 ## Hardware description of demo application
 
 Blokové schéma našeho UART projektu:
+![schema_projektu](https://user-images.githubusercontent.com/124675731/235494345-95cdc9f5-c5ab-4499-8648-8e219bd22079.png)
 
 
 ## Software description
