@@ -69,10 +69,10 @@ begin
   
  
 
-  --------------------------------------------------------
-  -- Instance (copy) of cnt_up_down entity performs
-  -- a 2-bit down counter
-  --------------------------------------------------------
+--------------------------------------------------------
+-- Instance (copy) of cnt_up_down entity performs
+-- a 2-bit down counter
+--------------------------------------------------------
 --  bin_cnt0 : entity work.cnt_up_down
 --    generic map (
 --        g_CNT_WIDTH => 2
@@ -80,17 +80,15 @@ begin
 --    port map (
 --      rst => rst,
 --      en => sig_en_4ms,
- --     clk => clk,
- --     cnt_up => '0',
+--     clk => clk,
+--     cnt_up => '0',
 --      cnt => sig_cnt_2bit
- --   );
+--   );
 
-  --------------------------------------------------------
-=======
->>>>>>> 42c3be2f1a4dbfdfe5965d6b85588521513745cd
-  -- Instance (copy) of hex_7seg entity performs
-  -- a 7-segment display decoder
-  --------------------------------------------------------
+--------------------------------------------------------
+-- Instance (copy) of hex_7seg entity performs
+-- a 7-segment display decoder
+--------------------------------------------------------
   hex2seg : entity work.hex_7seg
     port map (
       blank => rst,
@@ -98,12 +96,12 @@ begin
       seg   => seg
     );
 
-  --------------------------------------------------------
-  -- p_mux:
-  -- Sekvenční proces, který implementuje multiplexer pro
-  -- výběr dat pro jednu číslici, desetinnou čárku,
-  -- a přepíná společné anody každého displeje.
-  --------------------------------------------------------
+--------------------------------------------------------
+-- p_mux:
+-- Sekvenční proces, který implementuje multiplexer pro
+-- výběr dat pro jednu číslici, desetinnou čárku,
+-- a přepíná společné anody každého displeje.
+--------------------------------------------------------
   p_mux : process (clk) is
   begin
 
