@@ -23,12 +23,12 @@ architecture Behavioral of clock_enable is
     signal s_Num_cnt : std_logic_vector(16-1 downto 0) := x"0000"; --signal pro pocitani cyklu
 begin
 
-    --------------------------------------------------------------------
-    -- p_clk_enable:
-    -- Vygenerujte signál povolení hodin namísto vytváření dalších hodin
-    -- doména. Ve výchozím nastavení je signál povolení nízký a generovaný pulz je
-    -- vždy jednu hodinu dlouhé.
-    --------------------------------------------------------------------
+--------------------------------------------------------------------
+-- p_clk_enable:
+-- Vygenerujte signál povolení hodin namísto vytváření dalších hodin
+-- doména. Ve výchozím nastavení je signál povolení nízký a generovaný pulz je
+-- vždy jednu hodinu dlouhé.
+--------------------------------------------------------------------
     p_clk_enable : process(Clk)
     begin
         if Clk'event and Clk ='1' then                                 
