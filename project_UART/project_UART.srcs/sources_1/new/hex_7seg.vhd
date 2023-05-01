@@ -53,8 +53,6 @@ begin
 
           seg <= "1001111"; -- 1
 
-        -- WRITE YOUR CODE HERE
-        -- 2, 3, 4, 5, 6, 7
         when "0010" =>
 
           seg <= "0010010"; -- 2
@@ -83,8 +81,6 @@ begin
 
           seg <= "0000000"; -- 8
 
-        -- WRITE YOUR CODE HERE
-        -- 9, A, b, C, d
         when "1001" =>
 
           seg <= "0000100"; -- 9
@@ -107,11 +103,11 @@ begin
 
         when "1110" =>
 
-          seg <= "0110000"; -- E
+          seg <= "0110000"; -- E (14)
 
         when others =>
 
-          seg <= "0111000"; -- F
+          seg <= "0111000"; -- F (15)
 
       end case;
 
