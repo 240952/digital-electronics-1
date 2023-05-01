@@ -98,7 +98,7 @@ if r_Bit_Index < 7 then
          r_SM_Main   <= s_TX_Data_Bits;
 else
          r_Bit_Index <= 0;
-         r_SM_Main   <= s_TX_Stop_Bit; end if; end if; -- Pošle stop bit. 
+         r_SM_Main   <= s_TX_Stop_Bit; end if; end if; -- Posle stop bit. 
          o_TX_Serial <= '1';
  
 --------------------------------------------------------------
