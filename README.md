@@ -35,10 +35,15 @@ Simulace projektu:
 
 ## Instructions
 
-Receiver:
+### Reciever
+1. Pripojte piny k desce
+2. Mate k dispozici prvnich 8 switchu a jedno reset tlacitko uprostred.
+3. K tomu je jeste 8 LED
 
-Transmitter:
-
+### Transmitter
+1. Pripojte piny k desce
+2. Mate k dispozici prvnich 8 switchu a jedno reset tlacitko uprostred. 
+3. K tomu je jeste 8 LED
 
 
 ## References
