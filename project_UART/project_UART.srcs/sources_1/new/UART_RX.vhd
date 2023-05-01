@@ -72,12 +72,13 @@ begin
 ----------------------------------------------------------------
 -- Vstupni stav
 ----------------------------------------------------------------
-                    
--- |84| s_data_valid                    nula do platnych dat
--- |86| s_indexBitA                     nula do aktualniho indexu bitu
--- |93| s_StartBit_rx;                  do stavu start
--- |95| A_data = '0'                    aktualni hodnota signalu
--- |96| s_ClkCount <=0;                 reset clkcount
+
+-- |84|s_idle =>                        Vstuoni stav
+-- |85| s_data_valid                    nula do platnych dat
+-- |87| s_indexBitA                     nula do aktualniho indexu bitu
+-- |90| s_StartBit_rx;                  do stavu start
+-- |96| A_data = '0'                    aktualni hodnota signalu
+-- |97| s_ClkCount <=0;                 reset clkcount
 -----------------------------------------------------------------
 
 when s_idle => -- Vstuoni stav
@@ -117,10 +118,10 @@ else
 end if;  
    end if;  
 ----------------------------------------------------------------------------
--- |101|s_ClkCount <= s_ClkCount +1;    inkrementace count
--- |110|s_bytes(s_indexBitA) <= A_data; ulozeni prijeteho bitu
--- |111|if s_indexBitA<7                zde kontroluju,zda jsem prijal vsechny bity
--- |124|s_data_valid <= '1';            oznacim si, ze znam nove data
+-- |107|s_ClkCount <= s_ClkCount +1;    inkrementace count
+-- |111|s_bytes(s_indexBitA) <= A_data; ulozeni prijeteho bitu
+-- |112|if s_indexBitA<7                zde kontroluju,zda jsem prijal vsechny bity
+-- |131|s_data_valid <= '1';            oznacim si, ze znam nove data
 -----------------------------------------------------------------------------
 when s_StopBit_rx => --stav pro zpracovani stop bitu
  if s_ClkCount < Clk_per_bit-1 then
@@ -172,6 +173,9 @@ end if;
              s_indexBitA <=0;
              r_SM_Main <=s_StopBit_rx;
       end if;  
+-----------------------
+-- Stop bit
+-----------------------
       end if;    
       when s_StopBit_rx => 
       if s_ClkCount < Clk_per_bit-1 then
