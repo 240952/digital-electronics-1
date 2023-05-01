@@ -81,35 +81,35 @@ begin
 -- |97| s_ClkCount <=0;                 reset clkcount
 -----------------------------------------------------------------
 
-when s_idle => -- Vstuoni stav
-     s_data_valid<=  '0'; -- Nula do platnych dat
-     s_ClkCount  <=   0;  -- Nula do pocitadla
-     s_indexBitA <=   0;  -- Nula do aktualniho indexu bitu
+when s_idle => 
+     s_data_valid<=  '0'; 
+     s_ClkCount  <=   0;  
+     s_indexBitA <=   0;  
                         
-if A_data = '0' then -- pokud je aktulani hodnota signalu 0
-     r_SM_Main <= s_StartBit_rx; --do stavu start
+if A_data = '0' then
+     r_SM_Main <= s_StartBit_rx; 
 else
-      r_SM_Main <= s_idle; -- jinak v idle
+      r_SM_Main <= s_idle; 
 end if;        
      when s_StartBit_rx =>
-if s_ClkCount = (Clk_per_bit-1)/2 then -- zda uplynula doba trvani 1 bitu
-if A_data = '0' then --hodnota aktualni hodnota signalu 0
-       s_ClkCount <=0; -- reset clkcount
-       r_SM_Main <= s_DataBits_rx; -- do stavu dataBits
+if s_ClkCount = (Clk_per_bit-1)/2 then 
+if A_data = '0' then 
+       s_ClkCount <=0; 
+       r_SM_Main <= s_DataBits_rx; 
 else
        r_SM_Main <= s_idle;   
 end if;
-       s_ClkCount <= s_ClkCount +1; -- inkrementuj count
+       s_ClkCount <= s_ClkCount +1; 
        r_SM_Main <= s_StartBit_rx;                            
 end if;  
-     when  s_DataBits_rx => -- stav pro zpracovani bitu
-if s_ClkCount < Clk_per_bit-1 then -- pokud neuplynulo  
+     when  s_DataBits_rx => 
+if s_ClkCount < Clk_per_bit-1 then   
        s_ClkCount <= s_ClkCount +1;
-       r_SM_Main <= s_DataBits_rx; -- zustavame v tomto stavu
+       r_SM_Main <= s_DataBits_rx; 
 else
        s_ClkCount <= 0;
-       s_bytes(s_indexBitA) <= A_data;  --ulozeni prijeteho bitu
-if s_indexBitA<7 then -- zde kontroluju,zda jsem prijal vsechny bity
+       s_bytes(s_indexBitA) <= A_data;  
+if s_indexBitA<7 then 
        s_indexBitA <= s_indexBitA+1;
        r_SM_Main <=s_DataBits_rx;
 else
@@ -121,14 +121,15 @@ end if;
 -- |107|s_ClkCount <= s_ClkCount +1;    inkrementace count
 -- |111|s_bytes(s_indexBitA) <= A_data; ulozeni prijeteho bitu
 -- |112|if s_indexBitA<7                zde kontroluju,zda jsem prijal vsechny bity
+-- |127|s_StopBit_rx =>                 stav pro zpracovani stop bitu
 -- |131|s_data_valid <= '1';            oznacim si, ze znam nove data
 -----------------------------------------------------------------------------
-when s_StopBit_rx => --stav pro zpracovani stop bitu
+when s_StopBit_rx => 
  if s_ClkCount < Clk_per_bit-1 then
         s_ClkCount <= s_ClkCOunt + 1;
         r_SM_Main <= s_StopBit_rx;
 else  
-        s_data_valid <= '1'; -- oznacim si, ze znam nove data
+        s_data_valid <= '1'; 
         s_ClkCount <= 0;
         r_SM_Main <=s_clear;
 end if;
