@@ -14,20 +14,37 @@ UART znamená v překladu univerzální asynchronní přijímač/vysílač. Je t
 ## Hardware description of demo application
 
 Blokové schéma našeho UART projektu:
+![schema_projektu](https://user-images.githubusercontent.com/124675731/235494345-95cdc9f5-c5ab-4499-8648-8e219bd22079.png)
 
 
 ## Software description
 
-Put flowchats/state diagrams of your algorithm(s) and direct links to source/testbench files in `src` and `sim` folders. 
+Receiver:
+This receiver is able to receive 8 bits of serial data, one start bit, one stop bit, and no parity bit.  When receive is complete o_rx_dv will be driven high for one clock cycle.
+
+Transmitter:
+This transmitter is able to transmit 8 bits of serial data, one start bit, one stop bit, and no parity bit.  When transmit is complete o_TX_Done will be driven high for one clock cycle.
 
 ### Component(s) simulation
 
+Simulace projektu:
 
-Write descriptive text and simulation screenshots of your components.
+![simulace](https://user-images.githubusercontent.com/124675731/235498417-585c4e42-5c76-4d58-83c0-33b1e89fee9c.png)
+
+
 
 ## Instructions
 
-Write an instruction manual for your application, including photos or a link to a video.
+### Reciever
+1. Pripojte piny k desce
+2. Mate k dispozici prvnich 8 switchu a jedno reset tlacitko uprostred.
+3. K tomu je jeste 8 LED
+
+### Transmitter
+1. Pripojte piny k desce
+2. Mate k dispozici prvnich 8 switchu a jedno reset tlacitko uprostred. 
+3. K tomu je jeste 8 LED
+
 
 ## References
 

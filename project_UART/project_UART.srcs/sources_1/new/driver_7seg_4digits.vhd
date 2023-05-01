@@ -61,6 +61,7 @@ architecture behavioral of driver_7seg_4digits is
 begin
 
   --------------------------------------------------------
+<<<<<<< HEAD
   -- Instance (copy) of clock_enable entity generates
   -- an enable pulse every 4 ms
   --------------------------------------------------------
@@ -85,6 +86,8 @@ begin
  --   );
 
   --------------------------------------------------------
+=======
+>>>>>>> 42c3be2f1a4dbfdfe5965d6b85588521513745cd
   -- Instance (copy) of hex_7seg entity performs
   -- a 7-segment display decoder
   --------------------------------------------------------
@@ -97,9 +100,9 @@ begin
 
   --------------------------------------------------------
   -- p_mux:
-  -- A sequential process that implements a multiplexer for
-  -- selecting data for a single digit, a decimal point,
-  -- and switches the common anodes of each display.
+  -- Sekvenční proces, který implementuje multiplexer pro
+  -- výběr dat pro jednu číslici, desetinnou čárku,
+  -- a přepíná společné anody každého displeje.
   --------------------------------------------------------
   p_mux : process (clk) is
   begin
