@@ -69,9 +69,16 @@ begin
     if Clk'event and Clk = '1' then
        case r_SM_Main is 
                 
-------------------------------------------------
+----------------------------------------------------------------
 -- Vstupni stav
-------------------------------------------------
+----------------------------------------------------------------
+                    
+-- |84| s_data_valid                    nula do platnych dat
+-- |86| s_indexBitA                     nula do aktualniho indexu bitu
+-- |93| s_StartBit_rx;                  do stavu start
+-- |95| A_data = '0'                    aktualni hodnota signalu
+-- |96| s_ClkCount <=0;                 reset clkcount
+-----------------------------------------------------------------
 
 when s_idle => -- Vstuoni stav
      s_data_valid<=  '0'; -- Nula do platnych dat
@@ -108,7 +115,13 @@ else
        s_indexBitA <=0;
        r_SM_Main <=s_StopBit_rx; 
 end if;  
-   end if;    
+   end if;  
+----------------------------------------------------------------------------
+-- |101|s_ClkCount <= s_ClkCount +1;    inkrementace count
+-- |110|s_bytes(s_indexBitA) <= A_data; ulozeni prijeteho bitu
+-- |111|if s_indexBitA<7                zde kontroluju,zda jsem prijal vsechny bity
+-- |124|s_data_valid <= '1';            oznacim si, ze znam nove data
+-----------------------------------------------------------------------------
 when s_StopBit_rx => --stav pro zpracovani stop bitu
  if s_ClkCount < Clk_per_bit-1 then
         s_ClkCount <= s_ClkCOunt + 1;
@@ -124,16 +137,6 @@ end if;
       when others =>
          r_SM_Main <= s_idle;                                                    
 
-----------------------------------------------------------------
--- Vstupni stav
-----------------------------------------------------------------
-                    
--- |84| s_data_valid                    nula do platnych dat
--- |86| s_indexBitA                     nula do aktualniho indexu bitu
--- |93| s_StartBit_rx;                  do stavu start
--- |95| A_data = '0'                    aktualni hodnota signalu
--- |96| s_ClkCount <=0;                 reset clkcount
------------------------------------------------------------------
     when s_idle => 
           s_data_valid<=  '0'; 
           s_ClkCount  <=   0;  
@@ -168,12 +171,6 @@ end if;
       else
              s_indexBitA <=0;
              r_SM_Main <=s_StopBit_rx;
-----------------------------------------------------------------------------
--- |101|s_ClkCount <= s_ClkCount +1;    inkrementace count
--- |110|s_bytes(s_indexBitA) <= A_data; ulozeni prijeteho bitu
--- |111|if s_indexBitA<7                zde kontroluju,zda jsem prijal vsechny bity
--- |124|s_data_valid <= '1';            oznacim si, ze znam nove data
------------------------------------------------------------------------------
       end if;  
       end if;    
       when s_StopBit_rx => 
