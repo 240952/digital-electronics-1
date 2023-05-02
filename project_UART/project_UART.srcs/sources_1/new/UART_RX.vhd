@@ -139,59 +139,7 @@ end if;
       when others =>
          r_SM_Main <= s_idle;                                                    
 
-    when s_idle => 
-          s_data_valid<=  '0'; 
-          s_ClkCount  <=   0;  
-          s_indexBitA <=   0;  
-                        
-     if A_data = '0' then 
-          r_SM_Main <= s_StartBit_rx; 
-     else
-           r_SM_Main <= s_idle; 
-     end if;        
-       when s_StartBit_rx =>
-          if s_ClkCount = (Clk_per_bit-1)/2 then 
-          if A_data = '0' then 
-             s_ClkCount <=0; 
-             r_SM_Main <= s_DataBits_rx; 
-      else
-             r_SM_Main <= s_idle;   
-      end if;
-             s_ClkCount <= s_ClkCount +1; 
-             r_SM_Main <= s_StartBit_rx;                            
-      end if;  
-      when   s_DataBits_rx => 
-      if s_ClkCount < Clk_per_bit-1 then 
-             s_ClkCount <= s_ClkCount +1;
-             r_SM_Main <= s_DataBits_rx; 
-      else
-             s_ClkCount <= 0;
-             s_bytes(s_indexBitA) <= A_data;  
-      if s_indexBitA<7 then 
-             s_indexBitA <= s_indexBitA+1;
-             r_SM_Main <=s_DataBits_rx;
-      else
-             s_indexBitA <=0;
-             r_SM_Main <=s_StopBit_rx;
-      end if;  
------------------------
--- Stop bit
------------------------
-      end if;    
-      when s_StopBit_rx => 
-      if s_ClkCount < Clk_per_bit-1 then
-               s_ClkCount <= s_ClkCOunt + 1;
-               r_SM_Main <= s_StopBit_rx;
-       else  
-               s_data_valid <= '1'; 
-               s_ClkCount <= 0;
-               r_SM_Main <=s_clear;
-      end if;
-        when  s_clear =>
-                r_SM_Main <= s_idle;
-                s_data_valid <='0';
-        when others =>
-                 r_SM_Main <= s_idle;                                                    
+                                                     
 
                 end case; 
             end if;
