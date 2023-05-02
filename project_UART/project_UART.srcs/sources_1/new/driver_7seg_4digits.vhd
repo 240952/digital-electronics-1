@@ -60,30 +60,12 @@ architecture behavioral of driver_7seg_4digits is
 
 begin
 
-  --------------------------------------------------------
-<<<<<<< HEAD
-  -- Instance (copy) of clock_enable entity generates
-  -- an enable pulse every 4 ms
-  --------------------------------------------------------
+
   
   
  
 
---------------------------------------------------------
--- Instance (copy) of cnt_up_down entity performs
--- a 2-bit down counter
---------------------------------------------------------
---  bin_cnt0 : entity work.cnt_up_down
---    generic map (
---        g_CNT_WIDTH => 2
---    )
---    port map (
---      rst => rst,
---      en => sig_en_4ms,
---     clk => clk,
---     cnt_up => '0',
---      cnt => sig_cnt_2bit
---   );
+
 
 --------------------------------------------------------
 -- Instance (copy) of hex_7seg entity performs
